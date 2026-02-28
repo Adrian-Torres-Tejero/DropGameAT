@@ -13,3 +13,14 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Archivos de utilidad temporales
+CreateWav.java
+CreateWav.class
+ResizeImages.java
+ResizeImages.class
+*.class
+
+# Carpetas de compilación de módulos
+core/build/
+desktop/build/
