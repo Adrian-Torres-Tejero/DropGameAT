@@ -42,3 +42,9 @@ El juego usa la arquitectura de pantallas de libGDX:
 Lo más importante que aprendí fue la diferencia entre la representación lógica y la gráfica. El juego no "ve" las imágenes para detectar colisiones, sino que trabaja con rectángulos matemáticos (`Rectangle`) que no se ven en pantalla. Las texturas son solo para mostrar algo al jugador.
 
 También entendí la utilidad del delta time: sin él, el juego iría más rápido o más lento según el ordenador donde se ejecute. Multiplicar siempre por `delta` lo hace justo para todos.
+
+##Para poder ejecutar el juego hay que introducir dos comando en la terminal de Android Studio.
+`$env:JAVA_HOME = "C:\Program Files\Android\Android Studio\jbr"`
+y despues este:
+`.\gradlew desktop:run`
+
