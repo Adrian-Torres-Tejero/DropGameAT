@@ -1,0 +1,61 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+    
+    version = '1.0'
+    ext {
+        appName = "SpaceCollector"
+        gdxVersion = '1.12.1'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url "https://jitpack.io" }
+    }
+}
+
+project(":desktop") {
+    apply plugin: "java"
+    apply plugin: "application"
+    
+    application {
+        mainClass = "com.ptpin.space.desktop.DesktopLauncher"
+    }
+
+    dependencies {
+        implementation project(":core")
+        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+
+    run {
+        workingDir = rootProject.file("assets").absolutePath
+        setIgnoreExitValue(true)
+        if (System.properties['os.name'].toLowerCase().contains("mac")) {
+            jvmArgs += "-XstartOnFirstThread"
+        }
+    }
+}
+
+project(":core") {
+    apply plugin: "java"
+
+    dependencies {
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
